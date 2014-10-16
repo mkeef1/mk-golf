@@ -11,6 +11,10 @@ html
     script(src='js/app.js')
     script(src='js/main_controller.js')
   body(ng-app='mk-golf', ng-controller='MainCtrl')
-    h1 Golf
-    .ball(ng-style='{height:ball.x}, {width:ball.y}') {{ball}}
-    button.button-light(ng-click='reset()') Reset
+    .screen
+      h1 Golf
+      button.button-light(ng-click='reset()') Reset
+      .ball(ng-style="{'margin-top': ball.x + 'px', 'margin-left': ball.y + 'px'}") {{ball}}
+      h1 {{ball.x}}
+      h1 {{ball.y}}
+      pre {{data | json}}

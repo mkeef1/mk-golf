@@ -1,4 +1,9 @@
 /* Empty. Add your own CSS if you like */
+.screen{
+  height: 100%;
+  width:100%;
+}
+
 .ball{
   background-color: blue;
   position: relative;

@@ -12,8 +12,13 @@
     <script src="js/main_controller.js"></script>
   </head>
   <body ng-app="mk-golf" ng-controller="MainCtrl">
-    <h1>Golf</h1>
-    <div ng-style="{height:ball.x}, {width:ball.y}" class="ball">{{ball}}</div>
-    <button ng-click="reset()" class="button-light">Reset</button>
+    <div class="screen">
+      <h1>Golf</h1>
+      <button ng-click="reset()" class="button-light">Reset</button>
+      <div ng-style="{'margin-top': ball.x + 'px', 'margin-left': ball.y + 'px'}" class="ball">{{ball}}</div>
+      <h1>{{ball.x}}</h1>
+      <h1>{{ball.y}}</h1>
+      <pre>{{data | json}}</pre>
+    </div>
   </body>
 </html>
