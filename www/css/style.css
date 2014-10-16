@@ -1,0 +1,7 @@
+/* Empty. Add your own CSS if you like */
+.ball{
+  background-color: blue;
+  position: relative;
+  height: 20px;
+  width: 20px;
+}
