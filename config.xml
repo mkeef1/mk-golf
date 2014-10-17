@@ -13,6 +13,10 @@
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
+  <preference name="Orientation" value="portrait"/>
+  <feature name="Compass">
+    <param name="android-package" value="org.apache.cordova.CompassListener"/>
+  </feature>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>

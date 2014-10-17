@@ -14,7 +14,8 @@ html
     .screen
       h1 Golf
       button.button-light(ng-click='reset()') Reset
-      .ball(ng-style="{'margin-top': ball.x + 'px', 'margin-left': ball.y + 'px'}") {{ball}}
-      h1 {{ball.x}}
-      h1 {{ball.y}}
+      button.button-large.button-light(ng-click='start()') Start
+      .hole(ng-style="{'margin-top': hole.x + 'px', 'margin-left': hole.y + 'px'}") {{hole}}
+      .ball {{ball}}
       pre {{data | json}}
+      pre {{orientation | json}}

@@ -15,10 +15,11 @@
     <div class="screen">
       <h1>Golf</h1>
       <button ng-click="reset()" class="button-light">Reset</button>
-      <div ng-style="{'margin-top': ball.x + 'px', 'margin-left': ball.y + 'px'}" class="ball">{{ball}}</div>
-      <h1>{{ball.x}}</h1>
-      <h1>{{ball.y}}</h1>
+      <button ng-click="start()" class="button-large button-light">Start</button>
+      <div ng-style="{'margin-top': hole.x + 'px', 'margin-left': hole.y + 'px'}" class="hole">{{hole}}</div>
+      <div class="ball">{{ball}}</div>
       <pre>{{data | json}}</pre>
+      <pre>{{orientation | json}}</pre>
     </div>
   </body>
 </html>
