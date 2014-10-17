@@ -11,13 +11,15 @@
           ctx    = canvas.getContext('2d'),
           centerX = canvas.width / 2,
           centerY = canvas.height / 2,
-          radius = 70;
+          radius = 20;
       $scope.ball = canvas;
+      if($scope.ball.x > 90){$scope.ball.x = 90}
+      if($scope.ball.x > 90){$scope.ball.x = 90}
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
       ctx.fillStyle = 'green';
       ctx.fill();
-      ctx.lineWidth = 5;
+      ctx.lineWidth = 1;
       ctx.strokeStyle = '#003300';
       ctx.stroke();
 

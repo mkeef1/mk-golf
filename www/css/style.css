@@ -1,18 +1,13 @@
 /* Empty. Add your own CSS if you like */
-#ball{
-  border: 1px, solid, black;
-  color: pink;
-}
+
+/*#ball{
+  height: 100%;
+  width: 100%;
+}*/
 
 .hole{
   background-color: blue;
   position: absolute;
   height: 20px;
   width: 20px;
-}
-
-.ball{
-  border: 1px solid black;
-  display: inline-block;
-  background-color: red;
 }
