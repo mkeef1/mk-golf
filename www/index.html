@@ -12,14 +12,11 @@
     <script src="js/main_controller.js"></script>
   </head>
   <body ng-app="mk-golf" ng-controller="MainCtrl">
-    <div class="screen">
-      <h1>Golf</h1>
-      <button ng-click="reset()" class="button-light">Reset</button>
-      <button ng-click="start()" class="button-large button-light">Start</button>
-      <div ng-style="{'margin-top': hole.x + 'px', 'margin-left': hole.y + 'px'}" class="hole">{{hole}}</div>
-      <div class="ball">{{ball}}</div>
-      <pre>{{data | json}}</pre>
-      <pre>{{orientation | json}}</pre>
-    </div>
+    <button ng-click="reset()" class="button button-positive">Reset</button>
+    <button ng-click="start()" class="button button-balanced">Start</button>
+    <div ng-style="{'margin-top': hole.x + 'px', 'margin-left': hole.y + 'px'}" class="hole"></div>
+    <div class="ball">{{ball}}</div>
+    <canvas id="screen"></canvas>
+    <canvas id="ball" ng-style="{'margin-top': ball.x + 'px', 'margin-left': ball.y + 'px'}"></canvas>
   </body>
 </html>

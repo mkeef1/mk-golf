@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
-.screen{
-  height: 100%;
-  width:100%;
+#ball{
+  border: 1px, solid, black;
+  color: pink;
 }
 
 .hole{
@@ -15,6 +15,4 @@
   border: 1px solid black;
   display: inline-block;
   background-color: red;
-  height: 30px;
-  width: 30px;
 }
