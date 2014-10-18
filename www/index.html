@@ -14,8 +14,7 @@
   <body ng-app="mk-golf" ng-controller="MainCtrl">
     <button ng-click="reset()" class="button button-positive">Reset</button>
     <button ng-click="start()" class="button button-balanced">Start</button>
-    <div ng-style="{'margin-top': hole.y * 10 + 'px', 'margin-left': hole.x * 10 + 'px'}" class="hole"></div>
-    <h6>Ball {{ball}}</h6>
-    <canvas id="ball" ng-style="{'margin-top': ball.y * 1 + 'px', 'margin-left': ball.x * 1 + 'px'}"></canvas>
+    <canvas id="hole" ng-style="{'margin-top': hole.y + 'px', 'margin-left': hole.x + 'px'}" height="$scope.hole.x" width="$scope.hole.y"></canvas>
+    <canvas id="ball" height="$scope.ball.centerX" width="$scope.ball.centerY" ng-style="{'margin-top': ball.y + 'px', 'margin-left': ball.x + 'px'}"></canvas>
   </body>
 </html>
