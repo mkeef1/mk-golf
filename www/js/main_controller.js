@@ -42,8 +42,8 @@
           ctxH    = canvasHole.getContext('2d');
       ctxH.fillRect(40, 40, 100, 100);
       $scope.hole = ctxH;
-      $scope.hole.x = Math.random() * 100;
-      $scope.hole.y = Math.random() * 100; 
+      $scope.hole.x = (Math.random() * 200);
+      $scope.hole.y = (Math.random() * 200); 
       console.log('Scopehole', $scope.hole);
       console.log('ctxh', ctxH);
     };
