@@ -24,10 +24,11 @@
       ctx.stroke();
       $scope.ball = canvasBall;
 
+      drawHole();
 
       $interval(function(){
         $scope.ball = $scope.ball;
-      }, 100);
+      }, 1000);
 
 
 
@@ -37,15 +38,18 @@
       console.log('data', $scope.data);
     };
 
-    $scope.reset = function(){
+    function drawHole(){
       var canvasHole = document.getElementById('hole'),
           ctxH    = canvasHole.getContext('2d');
-      ctxH.fillRect(40, 40, 100, 100);
+      ctxH.fillRect(0, 0, 100, 100);
       $scope.hole = ctxH;
-      $scope.hole.x = (Math.random() * 200);
-      $scope.hole.y = (Math.random() * 200); 
       console.log('Scopehole', $scope.hole);
       console.log('ctxh', ctxH);
+    }
+
+    $scope.reset = function(){
+      var position = (Math.random() * 90);
+      $scope.hole = (position, position, 100, 100);
     };
 
     window.addEventListener('deviceorientation', function(data){

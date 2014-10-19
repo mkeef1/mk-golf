@@ -13,6 +13,5 @@ html
   body(ng-app='mk-golf', ng-controller='MainCtrl')
     button.button.button-positive(ng-click='reset()') Reset
     button.button.button-balanced(ng-click='start()') Start
-    canvas#hole(ng-style="{'margin-top': hole.y + 'px', 'margin-left': hole.x + 'px'}", height='$scope.hole.x', width='$scope.hole.y')
-    canvas#ball(height='$scope.ball.centerX', width='$scope.ball.centerY',
-      ng-style="{'margin-top': ball.y + 'px', 'margin-left': ball.x + 'px'}")
+    canvas#hole
+    canvas#ball
