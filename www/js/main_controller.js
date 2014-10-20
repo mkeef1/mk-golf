@@ -4,13 +4,18 @@
 
   angular.module('mk-golf')
   .controller('MainCtrl', ['$scope', '$interval', function($scope, $interval){
-    $scope.hole = {};
 
+    $scope.reset = function(){
+      var random = Math.floor((Math.random() * 100));
+      $scope.hole = (random, random, 100, 100);
+      console.log('hole', $scope.hole);
+
+    };
     $scope.start = function(){
-      var canvasBall = document.getElementById('ball'),
-          ctx    = canvasBall.getContext('2d'),
-          centerX = canvasBall.width / 2,
-          centerY = canvasBall.height / 2,
+      var canvas = document.getElementById('ball'),
+          ctx    = canvas.getContext('2d'),
+          centerX = canvas.width / 2,
+          centerY = canvas.height / 2,
           radius = 20;
 
       if($scope.ball.x > 90){$scope.ball.x = 90;}
@@ -21,36 +26,25 @@
       ctx.fill();
       ctx.lineWidth = 1;
       ctx.strokeStyle = '#003300';
-      ctx.stroke();
-      $scope.ball = canvasBall;
+      $scope.ball = canvas;
 
       drawHole();
+      console.log('ball', $scope.ball);
 
       $interval(function(){
         $scope.ball = $scope.ball;
       }, 1000);
-
-
-
-      //navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-
-      console.log('ball', $scope.ball);
-      console.log('data', $scope.data);
     };
-
+      //navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
     function drawHole(){
-      var canvasHole = document.getElementById('hole'),
-          ctxH    = canvasHole.getContext('2d');
-      ctxH.fillRect(0, 0, 100, 100);
-      $scope.hole = ctxH;
-      console.log('Scopehole', $scope.hole);
-      console.log('ctxh', ctxH);
+      var canvas = document.getElementById('hole'),
+          ctx    = canvas.getContext('2d');
+
+      ctx.fillRect(20, 20, 100, 100);
+      $scope.hole = canvas;
+      console.log('hole', $scope.hole);
     }
 
-    $scope.reset = function(){
-      var position = (Math.random() * 90);
-      $scope.hole = (position, position, 100, 100);
-    };
 
     window.addEventListener('deviceorientation', function(data){
       $scope.data = data;
