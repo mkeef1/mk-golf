@@ -4,47 +4,53 @@
 
   angular.module('mk-golf')
   .controller('MainCtrl', ['$scope', '$interval', function($scope, $interval){
+    $scope.hole = {};
+    var WIDTH = window.innerWidth,
+        HEIGHT = window.innerHeight,
+        ctx,
+        x2 = Math.random()*(WIDTH - 20),
+        y2 = Math.random()*(HEIGHT - 20),
+        dy = 5,
+        dx = 5,
+        x  = 0,
+        y  = 0;
 
     $scope.reset = function(){
-      var random = Math.floor((Math.random() * 100));
-      $scope.hole = (random, random, 100, 100);
-      console.log('hole', $scope.hole);
+      var canvas = document.getElementById('screen'),
+          ctx    = canvas.getContext('2d');
+      ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
     };
-    $scope.start = function(){
-      var canvas = document.getElementById('ball'),
-          ctx    = canvas.getContext('2d'),
-          centerX = canvas.width / 2,
-          centerY = canvas.height / 2,
-          radius = 20;
-
-      if($scope.ball.x > 90){$scope.ball.x = 90;}
-      if($scope.ball.x > 90){$scope.ball.x = 90;}
+     function circle(x,y,r){
       ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      ctx.fillStyle = 'green';
+      ctx.arc(x, y, r, 0, 2 * Math.PI, true);
       ctx.fill();
       ctx.lineWidth = 1;
       ctx.strokeStyle = '#003300';
-      $scope.ball = canvas;
-
-      drawHole();
-      console.log('ball', $scope.ball);
-
-      $interval(function(){
-        $scope.ball = $scope.ball;
-      }, 1000);
-    };
-      //navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-    function drawHole(){
-      var canvas = document.getElementById('hole'),
-          ctx    = canvas.getContext('2d');
-
-      ctx.fillRect(20, 20, 100, 100);
-      $scope.hole = canvas;
-      console.log('hole', $scope.hole);
+      ctx.stroke();
     }
 
+    function rect(x,y,w,h){
+      ctx.clearRect(x, y, WIDTH, HEIGHT);
+    }
+
+    function draw(){
+      ctx.fillStyle = 'white';
+      rect(0, 0, WIDTH, HEIGHT);
+      ctx.fillStyle = 'black';
+      circle(x2, y2, 20);
+      ctx.fillStyle = 'green';
+      circle($scope.ball.x, $scope.ball.y, 10);
+
+      x = dx;
+      y = dy;
+    }
+
+
+    function init(){
+      var canvas = document.getElementById('screen');
+      ctx = canvas.getContext('2d');
+      }
 
     window.addEventListener('deviceorientation', function(data){
       $scope.data = data;
@@ -52,19 +58,19 @@
       $scope.$digest();
     });
 
-    /*function onSuccess(acceleration){
-      $scope.speed = acceleration;
-      alert('Acceleration X: ' + acceleration.x + '\n' +
-          'Acceleration Y: ' + acceleration.y + '\n' +
-          'Acceleration Z: ' + acceleration.z + '\n' +
-          'Timestamp: '      + acceleration.timestamp + '\n');
-    }
-
-    function onError(){
-      alert('onError!');
-    }*/
-
-
+    window.addEventListener('devicemotion', function(speed){
+      $scope.speed = {x: speed.accelerationIncludingGravity.x,
+        y: speed.accelerationIncludingGravity.y,
+        z: speed.accelerationIncludingGravity.z};
+      dx += -$scope.speed.x / 2;
+      dy += $scope.speed.y / 2;
+      $scope.$digest();
+    });
+    $scope.start = function(){
+      init();
+      $interval(draw(), function(){
+        }, 1000);
+    };
 
 
   }]);
